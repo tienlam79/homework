@@ -1,4 +1,4 @@
-﻿# React Native Interview Homework
+# React Native Interview Homework
 The goal of the developer exercise is to take a quick dive into a React Native + Expo project and build a two screen contact manager app. Left Field Labs will be evaluating the code and will schedule a walkthrough call with the developer candidate to discuss design choices.
 
 ## Timelines and Contact
@@ -25,7 +25,7 @@ Once you setup your expo dev environment with the setup below
 - Develop!
 
 ### Turning In
-Once you are satisfied in your progress, please return a link to your forked codebase to Jesse and Matt (or the contact that had assigned this homework). Also, please publish your app to expo (see [How To Publish](https://docs.expo.io/versions/latest/guides/publishing.html#how-to-publish)) and send the link to the published app with your repository link. These links are required for evaluation.
+Once you are satisfied in your progress, please return a link to your forked codebase to Thanh Nguyen (or the contact that had assigned this homework). Also, please publish your app to expo (see [How To Publish](https://docs.expo.io/versions/latest/guides/publishing.html#how-to-publish)) and send the link to the published app with your repository link. These links are required for evaluation.
 
 -------------------
 
