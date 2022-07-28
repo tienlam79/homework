@@ -4,17 +4,18 @@
     "description": "React Native + Expo Homework - LFL",
     "slug": "contact-manager",
     "privacy": "public",
-    "sdkVersion": "20.0.0",
     "version": "1.0.0",
     "orientation": "portrait",
     "primaryColor": "#cccccc",
     "icon": "./assets/icons/app-icon.png",
-    "loading": {
-      "icon": "./assets/icons/loading-icon.png",
-      "hideExponentText": false
-    },
+    // "loading": {
+    //   "icon": "./assets/icons/loading-icon.png",
+    //   "hideExponentText": false
+    // },
     "packagerOpts": {
-      "assetExts": ["ttf"]
+      "assetExts": [
+        "ttf"
+      ]
     },
     "ios": {
       "supportsTablet": false
