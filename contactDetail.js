@@ -7,18 +7,27 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { CONTACT_FAVORITE } from './constants';
 
 const ContactDetail = ({ contact, onBack, onRefreshList }) => {
-  console.log('...contact..', contact);
 
   const onOpenEmail = (email) => {
-    Linking.openURL(`mailto:${email}`);
+    try {
+      Linking.openURL(`mailto:${email}`);
+    } catch(error) {
+    }
   }
 
   const onOpenLink = (url) => {
-    Linking.openURL(url);
+    try {
+      Linking.openURL(url);
+    } catch(error) {
+    }
   }
 
   const onCall = (phone) => {
-    Linking.openURL(`tel:${phone}`);
+    try {
+      Linking.openURL(`tel:${phone}`);
+    } catch(error) {
+
+    }
   }
   return (
     <View style={styles.container}>
@@ -54,17 +63,17 @@ const ContactDetail = ({ contact, onBack, onRefreshList }) => {
           type='addresses'
           renderItem={({ item }) => <ContactDetailAddressItem label={item.label} address={item} />}
         />
-        {(contact?.birthday !== undefined || contact?.nonGregorianBirthday != undefined) &&
+        {(contact?.birthday !== undefined || contact?.nonGregorianBirthday !== undefined) &&
           <ContactInfo
-            data={[contact?.birthday, contact?.nonGregorianBirthday]}
+            data={contact?.nonGregorianBirthday != undefined ? [contact?.birthday, contact?.nonGregorianBirthday] : [contact?.birthday]}
             type='birthday'
-            renderItem={({ item }) => <ContactDetailItem label={item.format} value={`${item.day}/${item.month}/${item.year}`} />}
+            renderItem={({ item }) => <ContactDetailItem label={item?.format} value={`${item?.day}/${item?.month}/${item?.year}`} />}
           />
         }
         <ContactInfo
           data={contact?.dates}
           type='dates'
-          renderItem={({ item }) => <ContactDetailItem label={item.label} value={`${item.day || ''}/${item.month || ''}${item.year ? '/' : ''}${item.year || ''}`} />}
+          renderItem={({ item }) => <ContactDetailItem label={item?.label} value={`${item?.day || ''}/${item?.month || ''}${item?.year ? '/' : ''}${item?.year || ''}`} />}
         />
         <ContactInfo
           data={contact?.relationships}
@@ -140,8 +149,11 @@ const ContactActions = ({ contact, onRefreshList }) => {
 
   const openEmail = () => {
     const defaultEmail = contact.emails?.[0];
-    if(defaultEmail) {
-      Linking.openURL(`mailto:${defaultEmail?.email}`);
+    try {
+      if(defaultEmail) {
+        Linking.openURL(`mailto:${defaultEmail?.email}`);
+      }
+    } catch(error) {
     }
   }
 
@@ -171,15 +183,21 @@ const ContactActions = ({ contact, onRefreshList }) => {
 
   const onCall = () => {
     const defaultPhone = contact?.phoneNumbers?.[0];
-    if (defaultPhone) {
-      Linking.openURL(`tel:${defaultPhone.digits}`);
+    try {
+      if (defaultPhone) {
+        Linking.openURL(`tel:${defaultPhone.digits}`);
+      }
+    } catch(error) {
     }
   }
 
   const onMessage = () => {
     const defaultPhone = contact?.phoneNumbers?.[0];
-    if (defaultPhone) {
-      Linking.openURL(`sms:${defaultPhone.digits}`);
+    try {
+      if (defaultPhone) {
+        Linking.openURL(`sms:${defaultPhone.digits}`);
+      }
+    } catch(error) {
     }
   }
 
